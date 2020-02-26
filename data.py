@@ -3,7 +3,6 @@ from sqlite3 import Error  # import sqlite3 errors
 from Activity import Activity  # import activity class
 
 connection = sqlite3.connect("activity_tracker.db")  # enable db connection
-
 cursor = connection.cursor()  # set cursor
 
 
@@ -21,14 +20,22 @@ def create_table_activities():  # function to create table
     connection.commit()  # commit queries
 
 
+create_table_activities()
+
+
 def insert_activity(activity):  # function to insert activity
     insert_query = 'INSERT INTO activities VALUES (?, ?, ?, ?, ?, ?, ?)'  # statement for inserting activities
     # execute insert query
-    cursor.execute(insert_query, (id, activity.date, activity.type, activity.distance,
+    cursor.execute(insert_query, (activity.id, activity.date, activity.type, activity.distance,
                                   activity.duration, activity.average_speed, activity.info))
     connection.commit()  # commit queries
 
 
+activity_1 = Activity(1, '26.02.2020', 'strength', None, 45, None, 'upper body')
+
+insert_activity(activity_1)
+
+'''
 def activity_overview():  # function to show recent activities
     overview_query = 'SELECT * FROM activities LIMIT LIMIT 50'  # query to show recent activities
     cursor.execute(overview_query)  # execute overview query
@@ -75,6 +82,6 @@ def order_activities(field):  # function to order results
     order_query = 'SELECT * FROM activities ORDER BY ? LIMIT 50'
     cursor.execute(order_query, field)
     connection.commit()
-
+'''
 
 connection.close()  # close connection
