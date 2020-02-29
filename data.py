@@ -20,7 +20,7 @@ def create_table_activities():  # function to create table
     connection.commit()  # commit queries
 
 
-create_table_activities()
+create_table_activities()  # create table for test
 
 
 def insert_activity(activity):  # function to insert activity
@@ -31,9 +31,9 @@ def insert_activity(activity):  # function to insert activity
     connection.commit()  # commit queries
 
 
-activity_1 = Activity(1, '26.02.2020', 'strength', None, 45, None, 'upper body')
+activity_1 = Activity(1, '26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
 
-insert_activity(activity_1)
+insert_activity(activity_1)  # test insert function 
 
 '''
 def activity_overview():  # function to show recent activities
