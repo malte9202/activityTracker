@@ -31,17 +31,21 @@ def insert_activity(activity):  # function to insert activity
     connection.commit()  # commit queries
 
 
-activity_1 = Activity(1, '26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
+# activity_1 = Activity(5, '26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
 
-insert_activity(activity_1)  # test insert function 
+# insert_activity(activity_1)  # test insert function
+
+
+def activity_overview():  # function to show recent activities
+    overview_query = 'SELECT * FROM activities LIMIT 10'  # query to show recent activities
+    overview = cursor.execute(overview_query)  # execute overview query
+    connection.commit()  # commit query
+    cursor.fetchall()
+    print(overview)
+
+activity_overview()
 
 '''
-def activity_overview():  # function to show recent activities
-    overview_query = 'SELECT * FROM activities LIMIT LIMIT 50'  # query to show recent activities
-    cursor.execute(overview_query)  # execute overview query
-    connection.commit()  # commit query
-
-
 def search_for_date(date):  # function to search for date
     search_query_date = 'SELECT * FROM activities WHERE date = ? LIMIT 50'  # query to search for date
     cursor.execute(search_query_date, date)  # execute search for date
