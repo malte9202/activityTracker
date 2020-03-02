@@ -38,10 +38,12 @@ def insert_activity(activity):  # function to insert activity
 
 def activity_overview():  # function to show recent activities
     overview_query = 'SELECT * FROM activities LIMIT 10'  # query to show recent activities
-    overview = cursor.execute(overview_query)  # execute overview query
+    cursor.execute(overview_query)  # execute overview query
     connection.commit()  # commit query
-    cursor.fetchall()
-    print(overview)
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
 
 activity_overview()
 
