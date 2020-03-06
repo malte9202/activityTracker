@@ -45,7 +45,7 @@ def activity_overview():  # function to show recent activities
         print(row)
 
 
-activity_overview()
+activity_overview() # call function for test purposes
 
 '''
 def search_for_date(date):  # function to search for date
