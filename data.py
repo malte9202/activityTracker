@@ -9,7 +9,7 @@ cursor = connection.cursor()  # set cursor
 def create_table_activities():  # function to create table
     # sql statement to create table activities
     create_table_query = 'CREATE TABLE IF NOT EXISTS activities' \
-                         '(id INTEGER PRIMARY KEY,' \
+                         '(id INTEGER PRIMARY KEY AUTOINCREMENT,' \
                          'date TEXT,' \
                          'type TEXT,' \
                          'distance REAL,' \
@@ -24,18 +24,18 @@ create_table_activities()  # create table for test
 
 
 def insert_activity(activity):  # function to insert activity
-    insert_query = 'INSERT INTO activities VALUES (?, ?, ?, ?, ?, ?, ?)'  # statement for inserting activities
+    insert_query = 'INSERT INTO activities VALUES (?, ?, ?, ?, ?, ?)'  # statement for inserting activities
     # execute insert query
-    cursor.execute(insert_query, (activity.id, activity.date, activity.type, activity.distance,
+    cursor.execute(insert_query, (activity.date, activity.type, activity.distance,
                                   activity.duration, activity.average_speed, activity.info))
     connection.commit()  # commit queries
 
 
-# activity_1 = Activity(5, '26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
+activity_1 = Activity('26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
 
-# insert_activity(activity_1)  # test insert function
+insert_activity(activity_1)  # test insert function
 
-
+'''
 def activity_overview():  # function to show recent activities
     overview_query = 'SELECT * FROM activities LIMIT 10'  # query to show recent activities
     cursor.execute(overview_query)  # execute overview query
@@ -46,7 +46,7 @@ def activity_overview():  # function to show recent activities
 
 
 activity_overview() # call function for test purposes
-
+'''
 '''
 def search_for_date(date):  # function to search for date
     search_query_date = 'SELECT * FROM activities WHERE date = ? LIMIT 50'  # query to search for date
