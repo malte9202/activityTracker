@@ -9,8 +9,7 @@ cursor = connection.cursor()  # set cursor
 def create_table_activities():  # function to create table
     # sql statement to create table activities
     create_table_query = 'CREATE TABLE IF NOT EXISTS activities' \
-                         '(id INTEGER PRIMARY KEY AUTOINCREMENT,' \
-                         'date TEXT,' \
+                         '(date TEXT,' \
                          'type TEXT,' \
                          'distance REAL,' \
                          'duration REAL,' \
@@ -31,9 +30,9 @@ def insert_activity(activity):  # function to insert activity
     connection.commit()  # commit queries
 
 
-activity_1 = Activity('26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
+# activity_1 = Activity('26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
 
-insert_activity(activity_1)  # test insert function
+# insert_activity(activity_1)  # test insert function
 
 '''
 def activity_overview():  # function to show recent activities
