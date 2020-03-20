@@ -28,7 +28,7 @@ info_label = Label(main_window, text="Press 'Quit' to exit the program")
 # test label
 welcome_label = Label(main_window)
 # user input
-user_input = Entry(main_window, bd=5, width=20)
+user_input_ = Entry(main_window, bd=5, width=20)
 
 
 # add components to the main window with PACK

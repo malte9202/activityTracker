@@ -1,6 +1,5 @@
 class Activity:
-    def __init__(self, id, date, type, distance, duration, average_speed, info):
-        self.id = id  # id for database
+    def __init__(self, date, type, distance, duration, average_speed, info):
         self.date = date  # date of activity, for all types
         self.type = type  # strength, run, bike, ...
         self.distance = distance  # only for some types
