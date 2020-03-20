@@ -89,4 +89,4 @@ def order_activities(field):  # function to order results
     connection.commit()
 '''
 
-connection.close()  # close connection
+# connection.close()  # close connection
