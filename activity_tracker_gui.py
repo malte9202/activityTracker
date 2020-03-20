@@ -24,7 +24,7 @@ exit_button = Button(main_window, text="Quit", command=main_window.quit)
 # label for adding an activity
 add_activity_label = Label(main_window, text="'Add activity' adds a new activity.")
 # info label
-info_label = Label(main_window, text="Some Information\n Press 'Quit' to exit the program")
+info_label = Label(main_window, text="Press 'Quit' to exit the program")
 # test label
 welcome_label = Label(main_window)
 # user input
