@@ -19,9 +19,6 @@ def create_table_activities():  # function to create table
     connection.commit()  # commit queries
 
 
-create_table_activities()  # create table for test
-
-
 def insert_activity(activity):  # function to insert activity
     insert_query = 'INSERT INTO activities VALUES (?, ?, ?, ?, ?, ?)'  # statement for inserting activities
     # execute insert query
