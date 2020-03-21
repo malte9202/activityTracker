@@ -33,12 +33,12 @@ input_average_speed = Entry(window, bd=3, width=15)
 input_info = Entry(window, bd=3, width=15)
 
 # convert user input to proper datatypes for insert
-activity_to_add.date = str(input_date.get())
-activity_to_add.type = str(input_type.get())
-activity_to_add.distance = float(input_distance.get())
-activity_to_add.duration = float(input_duration.get())
-activity_to_add.average_speed = float(input_average_speed.get())
-activity_to_add.info = str(input_info.get())
+activity_to_add.date = input_date.get()
+activity_to_add.type = input_type.get()
+activity_to_add.distance = input_distance.get()
+activity_to_add.duration = input_duration.get()
+activity_to_add.average_speed = input_average_speed.get()
+activity_to_add.info = input_info.get()
 
 # create buttons
 exit_button = Button(window, text="Quit", command=window.quit)
