@@ -11,7 +11,7 @@ window = Tk()
 window.title("ActivityTracker by malte9202")
 
 # create intro label
-info_label = Label(window, text="Enter the following activity data")
+main_label = Label(window, text="Enter the following activity data")
 
 # create labels for each input field
 date_label = Label(window, text="Date")
@@ -34,3 +34,28 @@ input_average_speed = Entry(window, bd=3, width=15)
 input_info = Entry(window, bd=3, width=15)
 
 # add components to the window in grid mode
+main_label.grid(row=0, column=0, columnspan=2)  # info label
+# date elements
+date_label.grid(row=1, column=0)
+input_date.grid(row=1, column=1)
+# type elements
+type_label.grid(row=2, column=0)
+input_type.grid(row=2, column=1)
+# distance elements
+distance_label.grid(row=3, column=0)
+input_distance.grid(row=3, column=1)
+# duration elements
+duration_label.grid(row=4, column=0)
+input_duration.grid(row=4, column=1)
+# average speed elements
+average_speed_label.grid(row=5, column=0)
+input_average_speed.grid(row=5, column=1)
+# info elements
+info_label.grid(row=6, column=0)
+input_info.grid(row=6, column=1)
+# exit button
+exit_button.grid(row=7, column=3)
+
+# waiting for user input in main loop
+window.mainloop()
+
