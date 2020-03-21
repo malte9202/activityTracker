@@ -32,6 +32,7 @@ input_duration = Entry(window, bd=3, width=15)
 input_average_speed = Entry(window, bd=3, width=15)
 input_info = Entry(window, bd=3, width=15)
 
+# convert user input to proper datatypes for insert
 activity_to_add.date = str(input_date.get())
 activity_to_add.type = str(input_type.get())
 activity_to_add.distance = float(input_distance.get())
