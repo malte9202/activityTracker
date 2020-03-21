@@ -29,7 +29,6 @@ def insert_activity(activity):  # function to insert activity
                                   activity.duration, activity.average_speed, activity.info))
     connection.commit()  # commit queries
 
-
 # activity_1 = Activity('26.02.2020', 'strength', None, 45, None, 'upper body')  # create test object
 
 # insert_activity(activity_1)  # test insert function
