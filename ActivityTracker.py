@@ -85,16 +85,17 @@ def save_activity():
 
 def activity_overview():  # function to show recent activities
     # query to show recent activities
-    overview_query = 'SELECT date, type, distance, duration, average_speed, info FROM activities LIMIT 1'
+    overview_query = 'SELECT date, type, distance, duration, average_speed, info FROM activities LIMIT 5'
     cursor.execute(overview_query)  # execute overview query
     connection.commit()  # commit query
     rows = cursor.fetchall()
-    current_column = 0
     current_row = 11
     for row in rows:
-        print(row)
+        current_column = 0
+        print(current_row)
         current_row += 1
         while current_column < len(row):
+            print(current_column)
             display_label = Label(window, text=row[current_column])
             display_label.grid(row=current_row, column=current_column)
             current_column += 1
