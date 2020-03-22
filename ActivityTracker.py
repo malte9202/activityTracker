@@ -31,7 +31,6 @@ def insert_activity(activity):
     cursor.execute(insert_query, (activity.date, activity.type, activity.distance, activity.duration,
                                   activity.average_speed, activity.info))
     connection.commit()  # commit query
-    intro_label.config(text="activity saved")
 
 
 # test function for button action
@@ -70,6 +69,14 @@ def save_activity():
     try:
         convert_user_input_to_object()  # convert user input to object
         insert_activity(convert_user_input_to_object())  # insert object into database
+        saved_label = Label(window, text="activity saved! You can enter another activity.")
+        saved_label.grid(row=7, column=0)
+        input_date.delete(0, 255)
+        input_type.delete(0, 255)
+        input_distance.delete(0, 255)
+        input_duration.delete(0, 255)
+        input_average_speed.delete(0, 255)
+        input_info.delete(0, 255)
     except ValueError:
         intro_label.config(text="please enter valid values for the mandatory fields (marked with *)")
 
