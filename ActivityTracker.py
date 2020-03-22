@@ -86,7 +86,7 @@ def save_activity():
 
 def activity_overview():  # function to show recent activities
     # query to show recent activities
-    overview_query = 'SELECT date, type, distance, duration, average_speed, info FROM activities LIMIT 5'
+    overview_query = 'SELECT date, type, distance, duration, average_speed, info FROM activities LIMIT 10'
     cursor.execute(overview_query)  # execute overview query
     connection.commit()  # commit query
     rows = cursor.fetchall()
