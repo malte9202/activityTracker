@@ -36,3 +36,22 @@ def insert_activity(activity):
 
 window = Tk()  # create main window
 window.title("ActivityTracker")  # set title for the window
+
+# create intro label
+intro_label = Label(window, text="Enter information about your activity")
+
+# create labels for each input field
+date_label = Label(window, text="Date")
+type_label = Label(window, text="Type")
+distance_label = Label(window, text="Distance")
+duration_label = Label(window, text="Duration")
+average_speed_label = Label(window, text="Average speed")
+info_label = Label(window, text="Info")
+
+# get user input for each attribute of the activity object
+input_date = Entry(window, bd=3, width=15)
+input_type = Entry(window, bd=3, width=15)
+input_distance = Entry(window, bd=3, width=15)
+input_duration = Entry(window, bd=3, width=15)
+input_average_speed = Entry(window, bd=3, width=15)
+input_info = Entry(window, bd=3, width=15)
