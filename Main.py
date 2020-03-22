@@ -4,6 +4,8 @@ from tkinter import *
 # import everything from the data file
 from data import *
 
+create_table_activities()  # create table for test
+
 # create main window
 window = Tk()
 
@@ -22,7 +24,7 @@ average_speed_label = Label(window, text="Average speed")
 info_label = Label(window, text="Info")
 
 # create activity to add object
-activity_to_add = Activity("a", "b", 1, 2, 3, "c")
+activity_to_add = Activity(None, None, None, None, None, None)
 
 # get user input for each attribute of the activity object
 input_date = Entry(window, bd=3, width=15)
