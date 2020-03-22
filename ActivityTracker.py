@@ -69,8 +69,10 @@ def save_activity():
     try:
         convert_user_input_to_object()  # convert user input to object
         insert_activity(convert_user_input_to_object())  # insert object into database
+        # place saved label as success massage
         saved_label = Label(window, text="activity saved! You can enter another activity.")
         saved_label.grid(row=7, column=0)
+        # delete input fields after successfully saving an activity
         input_date.delete(0, 255)
         input_type.delete(0, 255)
         input_distance.delete(0, 255)
