@@ -72,6 +72,7 @@ def save_activity():
         # place saved label as success massage
         saved_label = Label(window, text="activity saved! You can enter another activity.", fg="green")
         saved_label.grid(row=7, column=0)
+        activity_overview()
         # delete input fields after successfully saving an activity
         input_date.delete(0, 255)
         input_type.delete(0, 255)
@@ -85,7 +86,7 @@ def save_activity():
 
 def activity_overview():  # function to show recent activities
     # query to show recent activities
-    overview_query = 'SELECT date, type, distance, duration, average_speed, info FROM activities LIMIT 10'
+    overview_query = 'SELECT date, type, distance, duration, average_speed, info FROM activities LIMIT 5'
     cursor.execute(overview_query)  # execute overview query
     connection.commit()  # commit query
     rows = cursor.fetchall()
@@ -103,7 +104,7 @@ def activity_overview():  # function to show recent activities
 
 window = Tk()  # create main window
 window.title("ActivityTracker by malte9202")  # set title for the window
-window.geometry("750x500")
+window.geometry("1000x500")
 
 # create database table
 create_table_activities()
@@ -159,18 +160,22 @@ save_activity_button.grid(row=7, column=1)
 # create overview table
 recent_activity_label = Label(window, text="Most recent 10 activities")
 recent_activity_label.grid(row=12, column=0)
-date_column_label = Label(window, text="Date", bg="grey")
+date_column_label = Label(window, text="Date")
 date_column_label.grid(row=14, column=0)
-type_column_label = Label(window, text="Type", bg="grey")
+type_column_label = Label(window, text="Type")
 type_column_label.grid(row=14, column=1)
-distance_column_label = Label(window, text="Distance", bg="grey")
+distance_column_label = Label(window, text="Distance")
 distance_column_label.grid(row=14, column=2)
-duration_column_label = Label(window, text="Duration", bg="grey")
+duration_column_label = Label(window, text="Duration")
 duration_column_label.grid(row=14, column=3)
-average_speed_column_label = Label(window, text="Average speed", bg="grey")
+average_speed_column_label = Label(window, text="Average speed")
 average_speed_column_label.grid(row=14, column=4)
-info_column_label = Label(window, text="Info", bg="grey")
+info_column_label = Label(window, text="Info")
 info_column_label.grid(row=14, column=5)
+
+# create empty spaces
+empty_label = Label(window, text="")
+empty_label.grid(row=13, columnspan=3)
 
 # waiting for user input in main loop
 window.mainloop()
