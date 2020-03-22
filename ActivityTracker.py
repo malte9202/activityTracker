@@ -36,15 +36,33 @@ def insert_activity(activity):
 
 # test function for button action
 def convert_user_input_to_object():
+    # date, type and duration are mandatory
     date_to_save = input_date.get()
     type_to_save = input_type.get()
-    distance_to_save = float(input_distance.get())
     duration_to_save = float(input_duration.get())
-    average_speed_to_save = float(input_average_speed.get())
-    info_to_save = input_info.get()
+    # check if average speed is empty and set null if it is empty, if it is not empty convert to float
+    if input_average_speed.get() == "":
+        average_speed_to_save = None
+    else:
+        average_speed_to_save = float(input_average_speed.get())
+    # info is optional and anything can be entered, but check if empty to set null
+    if input_info.get() == "":
+        info_to_save = None
+    else:
+        info_to_save = input_info.get()
+    # check if distance is empty and set null, otherwise convert to float
+    if input_distance.get() == "":
+        distance_to_save = None
+    else:
+        distance_to_save = float(input_distance.get())
+    # create activity_to_save object with user input values
     activity_to_save = Activity(date_to_save, type_to_save, distance_to_save,
                                 duration_to_save,average_speed_to_save, info_to_save)
-    return activity_to_save
+    # check if date, type and duration are not empty because they are mandatory, raise ValueError if empty
+    if date_to_save == "" or type_to_save == "" or duration_to_save == "":
+        raise ValueError
+    else:
+        return activity_to_save
 
 
 # function to save activity
@@ -53,7 +71,7 @@ def save_activity():
         convert_user_input_to_object()  # convert user input to object
         insert_activity(convert_user_input_to_object())  # insert object into database
     except ValueError:
-        intro_label.config(text="please enter valid values for the mandatory fields")
+        intro_label.config(text="please enter valid values for the mandatory fields (marked with *)")
 
 
 # create program flow and graphical user interface
@@ -65,13 +83,13 @@ window.title("ActivityTracker")  # set title for the window
 create_table_activities()
 
 # create intro label
-intro_label = Label(window, text="Enter information about your activity")
+intro_label = Label(window, text="Enter information about your activity. Fields marked with * are mandatory.")
 
 # create labels for each input field
-date_label = Label(window, text="Date")
-type_label = Label(window, text="Type")
+date_label = Label(window, text="Date*")
+type_label = Label(window, text="Type*")
 distance_label = Label(window, text="Distance")
-duration_label = Label(window, text="Duration")
+duration_label = Label(window, text="Duration*")
 average_speed_label = Label(window, text="Average speed")
 info_label = Label(window, text="Info")
 
