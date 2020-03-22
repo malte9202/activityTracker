@@ -70,7 +70,7 @@ def save_activity():
         convert_user_input_to_object()  # convert user input to object
         insert_activity(convert_user_input_to_object())  # insert object into database
         # place saved label as success massage
-        saved_label = Label(window, text="activity saved! You can enter another activity.")
+        saved_label = Label(window, text="activity saved! You can enter another activity.", fg="green")
         saved_label.grid(row=7, column=0)
         # delete input fields after successfully saving an activity
         input_date.delete(0, 255)
@@ -80,20 +80,44 @@ def save_activity():
         input_average_speed.delete(0, 255)
         input_info.delete(0, 255)
     except ValueError:
-        intro_label.config(text="please enter valid values for the mandatory fields (marked with *)")
+        intro_label.config(text="please enter valid values for the mandatory fields (marked with *)", fg="red")
+
+
+def activity_overview():  # function to show recent activities
+    # query to show recent activities
+    overview_query = 'SELECT date, type, distance, duration, average_speed, info FROM activities LIMIT 1'
+    cursor.execute(overview_query)  # execute overview query
+    connection.commit()  # commit query
+    rows = cursor.fetchall()
+    for row in rows:
+        display_row = Label(window, text=row)
+        display_row.grid(row=11)
+        '''
+        tmp_date = row[0]
+        tmp_type = row[1]
+        tmp_distance = row[2]
+        tmp_duration = row[3]
+        tmp_average_speed = row[4]
+        tmp_info = row[5]
+        '''
 
 
 # create program flow and graphical user interface
 
 window = Tk()  # create main window
 window.title("ActivityTracker by malte9202")  # set title for the window
-window.geometry("500x200")
+window.geometry("1000x1000")
 
 # create database table
 create_table_activities()
 
+
+# show overview of recent activities
+activity_overview()
+
 # create intro label
 intro_label = Label(window, text="Enter information about your activity. Fields marked with * are mandatory.")
+intro_label.grid(row=0, column=0, columnspan=2)
 
 # create labels for each input field
 date_label = Label(window, text="Date*")
@@ -104,41 +128,50 @@ average_speed_label = Label(window, text="Average speed")
 info_label = Label(window, text="Info")
 
 # get user input for each attribute of the activity object
-input_date = Entry(window, bd=3, width=15)
-input_type = Entry(window, bd=3, width=15)
-input_distance = Entry(window, bd=3, width=15)
-input_duration = Entry(window, bd=3, width=15)
-input_average_speed = Entry(window, bd=3, width=15)
-input_info = Entry(window, bd=3, width=15)
-
-# create buttons
-exit_button = Button(window, text="Quit", command=window.quit)
-save_activity_button = Button(window, text="Save activity", command=save_activity)
-
-# add components to the window in grid mode
-intro_label.grid(row=0, column=0, columnspan=2)  # info label
 # date elements
+input_date = Entry(window, bd=3, width=15)
 date_label.grid(row=1, column=0)
 input_date.grid(row=1, column=1)
 # type elements
+input_type = Entry(window, bd=3, width=15)
 type_label.grid(row=2, column=0)
 input_type.grid(row=2, column=1)
 # distance elements
+input_distance = Entry(window, bd=3, width=15)
 distance_label.grid(row=3, column=0)
 input_distance.grid(row=3, column=1)
 # duration elements
+input_duration = Entry(window, bd=3, width=15)
 duration_label.grid(row=4, column=0)
 input_duration.grid(row=4, column=1)
 # average speed elements
+input_average_speed = Entry(window, bd=3, width=15)
 average_speed_label.grid(row=5, column=0)
 input_average_speed.grid(row=5, column=1)
 # info elements
+input_info = Entry(window, bd=3, width=15)
 info_label.grid(row=6, column=0)
 input_info.grid(row=6, column=1)
-# add activity button
-save_activity_button.grid(row=7, column=1)
-# exit button
+
+# create buttons
+exit_button = Button(window, text="Quit", command=window.quit)
 exit_button.grid(row=7, column=3)
+save_activity_button = Button(window, text="Save activity", command=save_activity)
+save_activity_button.grid(row=7, column=1)
+
+# create overview table
+date_column_label = Label(window, text="Date")
+date_column_label.grid(row=10, column=0)
+type_column_label = Label(window, text="Type")
+type_column_label.grid(row=10, column=1)
+distance_column_label = Label(window, text="Distance")
+distance_column_label.grid(row=10, column=2)
+duration_column_label = Label(window, text="Duration")
+duration_column_label.grid(row=10, column=3)
+average_speed_column_label = Label(window, text="Average speed")
+average_speed_column_label.grid(row=10, column=4)
+info_column_label = Label(window, text="Info")
+info_column_label.grid(row=10, column=5)
 
 # waiting for user input in main loop
 window.mainloop()
