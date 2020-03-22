@@ -89,17 +89,15 @@ def activity_overview():  # function to show recent activities
     cursor.execute(overview_query)  # execute overview query
     connection.commit()  # commit query
     rows = cursor.fetchall()
+    current_column = 0
+    current_row = 11
     for row in rows:
-        display_row = Label(window, text=row)
-        display_row.grid(row=11)
-        '''
-        tmp_date = row[0]
-        tmp_type = row[1]
-        tmp_distance = row[2]
-        tmp_duration = row[3]
-        tmp_average_speed = row[4]
-        tmp_info = row[5]
-        '''
+        print(row)
+        current_row += 1
+        while current_column < len(row):
+            display_label = Label(window, text=row[current_column])
+            display_label.grid(row=current_row, column=current_column)
+            current_column += 1
 
 
 # create program flow and graphical user interface
