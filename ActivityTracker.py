@@ -86,7 +86,8 @@ def save_activity():
 # create program flow and graphical user interface
 
 window = Tk()  # create main window
-window.title("ActivityTracker")  # set title for the window
+window.title("ActivityTracker by malte9202")  # set title for the window
+window.geometry("500x200")
 
 # create database table
 create_table_activities()
